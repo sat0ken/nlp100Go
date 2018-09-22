@@ -39,12 +39,10 @@ func main() {
 		if 4 < len(word) {
 			strFirst := string(word[0])
 			strLast := string(word[len(word)-1])
-			//fmt.Println(string(word[0]), string(word[1:len(word)-2]), string(word[len(word)-1]))
-			//fmt.Println(string(word[len(word)-1]))
-			rand.Seed(time.Now().UnixNano())
 			d := permutations(string(word[1 : len(word)-1]))
-			strShufle := d[rand.Intn(len(word))]
 
+			rand.Seed(time.Now().UnixNano())
+			strShufle := d[rand.Intn(len(word))]
 			fmt.Print(strFirst + strShufle + strLast + " ")
 		} else {
 			fmt.Print(word + " ")
