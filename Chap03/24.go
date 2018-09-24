@@ -38,14 +38,17 @@ func main() {
 	}
 
 	file := open("../data/jawiki-country.json")
-	reg := regexp.MustCompile(`Category`)
+	reg := regexp.MustCompile(`^\[\[File:(.*?)\|`)
+
 	for _, country := range file {
 		if country.Title == "イギリス" {
 			for _, v := range strings.Split(country.Text, "\n") {
-				if reg.MatchString(v) {
-					fmt.Println(v)
+				tmp := reg.FindStringSubmatch(v)
+				if tmp != nil {
+					fmt.Println(tmp[0])
 				}
 			}
 		}
 	}
+
 }

@@ -1,16 +1,16 @@
 package main
 
 import (
-    "bufio"
-    "fmt"
-    "os"
-    "io"
-    "encoding/json"
+	"bufio"
+	"encoding/json"
+	"fmt"
+	"io"
+	"os"
 )
 
 type Country struct {
-    Text string
-    Title string
+	Text  string
+	Title string
 }
 
 func main() {
@@ -24,21 +24,21 @@ func main() {
 		jsonline := []Country{}
 		r := bufio.NewReader(f)
 		for {
-            b, err := r.ReadBytes('\n')
-            if err == io.EOF {
-                break
-            }
-            tmp := Country{}
-            json.Unmarshal([]byte(b), &tmp)
-            jsonline = append(jsonline, tmp)
+			b, err := r.ReadBytes('\n')
+			if err == io.EOF {
+				break
+			}
+			tmp := Country{}
+			json.Unmarshal([]byte(b), &tmp)
+			jsonline = append(jsonline, tmp)
 		}
 		return jsonline
 	}
 
 	file := open("../data/jawiki-country.json")
-    for _, country := range file {
-        if country.Title == "イギリス" {
-            fmt.Println(country.Text)
-        }
-    }
+	for _, country := range file {
+		if country.Title == "イギリス" {
+			fmt.Println(country.Text)
+		}
+	}
 }
