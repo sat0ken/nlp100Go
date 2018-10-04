@@ -51,8 +51,18 @@ func main() {
 	}
 
 	neko := kaiseki(open("../data/neko.txt.mecab"))
-	for _, v := range neko {
-		fmt.Println(v)
+	for i := 0; i < len(neko); i++ {
+		var tmp string
+		if neko[i].pos == "名詞" && neko[i+1].pos == "名詞" {
+			tmp = neko[i].surface + neko[i+1].surface
+			for j := i + 2; j < len(neko); j++ {
+				if neko[j].pos == "名詞" {
+					tmp = tmp + neko[j].surface
+				} else {
+					fmt.Println(tmp)
+					break
+				}
+			}
+		}
 	}
-
 }

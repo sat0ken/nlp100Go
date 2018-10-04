@@ -50,7 +50,7 @@ func main() {
 		return slice
 	}
 
-	neko := kaiseki(open("neko.txt.mecab"))
+	neko := kaiseki(open("../data/neko.txt.mecab"))
 	for i := 0; i < len(neko); i++ {
 		if neko[i].pos == "助詞" && neko[i].base == "の" {
 			if neko[i-1].pos == "名詞" && neko[i+1].pos == "名詞" {

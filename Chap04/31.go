@@ -50,7 +50,7 @@ func main() {
 		return slice
 	}
 
-	neko := kaiseki(open("neko.txt.mecab"))
+	neko := kaiseki(open("../data/neko.txt.mecab"))
 	for _, v := range neko {
 		if v.pos == "動詞" {
 			fmt.Println(v.surface)
